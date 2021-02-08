@@ -29,20 +29,12 @@ void setup()
   Wire.begin();
 
   M5.Lcd.begin();
-  M5.Lcd.setCursor(10, 10);
   M5.Lcd.setTextColor(GREEN);
   M5.Lcd.setTextSize(3);
 
   mpu.Init();
 
-  M5.Lcd.setCursor(10, 10);
-  M5.Lcd.println(" G-Force Testing");
-  M5.Lcd.setCursor(30, 60);
-  M5.Lcd.printf("X: %f", data.peakX);
-  M5.Lcd.setCursor(30, 100);
-  M5.Lcd.printf("Y: %f", data.peakY);
-  M5.Lcd.setCursor(30, 140);
-  M5.Lcd.printf("Z: %f", data.peakZ);
+  updateDisplay();
 
   updateAccelDataEvent.frequency = 50; //this sets the frequency of the events
   xTimedPeak.frequency = bufferTime;
